@@ -15,9 +15,7 @@ const authenticate = async () => {
 
   try {
     const response = await axios(config);
-    // console.log(response.data);
     let sessionKey = response.data.records[0].sessionKey;
-    // console.log(sessionKey);
     return sessionKey;
   } catch (error) {
     console.log(error);
@@ -27,18 +25,20 @@ const authenticate = async () => {
 const getSalesDocuments = async () => {
   const sessionKey = await authenticate();
 
+  const dateFrom = "2021-03-15"
+  const dateTo = "2021-03-17"
+
   const config = {
     url: url,
     method: 'POST',
-    data: `clientCode=${clientCode}&sessionKey=${sessionKey}&request=getSalesDocuments&getRowsForAllInvoices=1&sendContentType=1&dateFrom=2021-03-15&dateTo=2021-03-17&confirmed=1`,
+    data: `clientCode=${clientCode}&sessionKey=${sessionKey}&request=getSalesDocuments&getRowsForAllInvoices=1&sendContentType=1&dateFrom=${dateFrom}&dateTo=${dateTo}&confirmed=1`,
   };
 
   try {
     const response = await axios(config);
     const responseData = response.data;
-    // console.log(Object.keys(responseData).length);
     console.log(responseData);
-    // console.log(responseData.records[0].rows); //arve read
+    // console.log(responseData.records[0].rows); // access to invoice rows
   } catch (error) {
     console.log(error);
   }
