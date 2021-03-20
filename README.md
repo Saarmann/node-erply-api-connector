@@ -8,7 +8,7 @@ Create connection to www.erply.com API.
 
     npm install
 
-2) create .env file to root and add:
+2) create .env file to root and add erply user information:
 
     CLIENT_CODE=[client code]
 
