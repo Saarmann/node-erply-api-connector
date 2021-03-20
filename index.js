@@ -44,6 +44,4 @@ const getSalesDocuments = async () => {
   }
 };
 
-
-
 getSalesDocuments();
